@@ -1,51 +1,51 @@
 class MyDict:
-    dict = []*max(i)
+    keys = []
+    values = []
 
     def __init__(self):
         """construct a dictionary"""
         pass
-
-    def keytoindex(self, key):
-        return int.from_bytes(
-            bytearray(key, encoding='utf8'),
-            byteorder='big'
-        )
 
     def put(self, key, value):
         """
         insert an item with key->value into the dictionary
         time complexity: 1
         """
-        intkey = self.keytoindex(key)
-        self.dict[intkey] = value
+        self.keys.append(key)
+        self.values.append(value)
 
     def get(self, key):
         """
         get an item with the given key from the dictionary
-        time complexity: 1
+        time complexity: n, ugh
         """
-        intkey = self.keytoindex(key)
-        return self.dict[intkey]
+        index = self.keys.index(key)
+        return self.values[index]
 
     def delete(self, key):
         """
         delete an item with the given key from the dictionary
         time complexity: 1
         """
-        intkey = self.keytoindex(key)
-        del self.dict[intkey]
+        index = self.keys.index(key)
+        del self.keys[index]
+        del self.values[index]
         return None
 
     def show(self):
-        return self.dict
+        return list(zip(self.keys, self.values))
 
 
 if __name__ == '__main__':
-    dict = MyDict()
-    dict.put("poke", 12345)
-    dict.put(1, "blah")
-    print(dict.show())
-    print()
+    meow = MyDict()
+    meow.put("poke", 12345)
+    meow.put(1, "blah")
+    meow.put("quack", "duck")
+    print(meow.show())
+    print(meow.get("poke"))
+    print(meow.delete("quack"))
+    print(meow.show())
+    #print(meow.get("ayay"))
 
 
 # int key to bytes
