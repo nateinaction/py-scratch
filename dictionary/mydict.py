@@ -27,7 +27,7 @@ class MyDict:
     def put(self, key, value, node=None):
         """
         insert an item with key->value into the dictionary
-        time complexity: 1
+        time complexity: n because there is no balancing
         """
         intkey = self.keytoindex(key)
 
@@ -49,7 +49,7 @@ class MyDict:
     def get(self, key, node=None):
         """
         get an item with the given key from the dictionary
-        time complexity: log(n)
+        time complexity: log(n) or n since there is no balancing
         """
         intkey = self.keytoindex(key)
 
@@ -68,7 +68,7 @@ class MyDict:
     def delete(self, key):
         """
         delete an item with the given key from the dictionary
-        time complexity: 1
+        time complexity:
         """
 
     def show(self, node):
