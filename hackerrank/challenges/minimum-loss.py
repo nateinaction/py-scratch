@@ -5,16 +5,14 @@ import sys
 
 def minimumLoss(priceList):
     loss = sys.maxsize
-
     for i, thisPrice in enumerate(priceList):
-        thisLoss = _minLoss(thisPrice, priceList[i:])
+        thisLoss = _minLoss(thisPrice, priceList[i:], loss)
         loss = min(loss, thisLoss)
 
     return loss
 
 
-def _minLoss(purchasedPrice, priceList):
-    loss = sys.maxsize
+def _minLoss(purchasedPrice, priceList, loss):
     for thisPrice in priceList:
         myLoss = purchasedPrice - thisPrice
         if loss > myLoss > 0:
