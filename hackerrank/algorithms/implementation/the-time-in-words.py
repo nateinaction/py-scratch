@@ -1,6 +1,7 @@
 # https://www.hackerrank.com/challenges/the-time-in-words/problem
 
 words = {
+    0: 'o\' clock',
     1: 'one',
     2: 'two',
     3: 'three',
@@ -38,7 +39,9 @@ def timeInWords(h, m):
     else:
         minutes = m
 
-    if minutes != 15 and minutes != 30:
+    if minutes == 1:
+        phrase = ' minute' + phrase
+    elif minutes != 15 and minutes != 30:
         phrase = ' minutes' + phrase
 
     if 20 < minutes < 30:
@@ -47,7 +50,7 @@ def timeInWords(h, m):
         minute_words = words[minutes]
 
     if m == 0:
-        return hour_words + " o' clock"
+        return hour_words + " " + minute_words
 
     return minute_words + phrase + hour_words
 
@@ -61,3 +64,6 @@ if __name__ == "__main__":
     print(timeInWords(1, 31))
     print(timeInWords(12, 30))
     print(timeInWords(9, 45))
+    print(timeInWords(5, 00))
+    print(timeInWords(1, 1))
+
