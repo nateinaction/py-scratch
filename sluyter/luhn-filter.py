@@ -1,15 +1,12 @@
 def is_valid(cc_num):
-    sum_me = []
-    for i, num in enumerate(reversed(cc_num)):
-        if (i + 1) % 2 == 0:
-            for doubled_num in str(num * 2):
-                sum_me.append(int(doubled_num))
+    total = 0
+    for i, num in enumerate(reversed(cc_num), 1):
+        if i % 2 == 0:
+            total += sum((int(x) for x in str(num * 2)))
         else:
-            sum_me.append(num)
+            total += num
 
-    if sum(sum_me) % 10 == 0:
-        return True
-    return False
+    return total % 10 == 0
 
 
 if __name__ == '__main__':
