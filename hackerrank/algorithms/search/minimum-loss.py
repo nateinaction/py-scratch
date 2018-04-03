@@ -20,7 +20,6 @@ def _minLoss(purchasedPrice, priceList, loss):
     return loss
 
 
-
 if __name__ == "__main__":
     myInput = "20 7 8 2 5"
     price = list(map(int, myInput.strip().split(' ')))
