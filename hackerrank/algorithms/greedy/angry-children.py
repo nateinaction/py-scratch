@@ -8,14 +8,8 @@ def angryChildren(num_in_group, arr):
     # sort the array
     arr.sort()
 
-    # iterate over array grabbing groups of num_in_group len
-    min_unfairness = sys.maxsize
-    for i in range(len(arr) - num_in_group + 1):
-        group = arr[i:i + num_in_group]
-        group_unfairness = group[-1] - group[0]
-        min_unfairness = min(group_unfairness, min_unfairness)
-
-    return min_unfairness
+    # calculate all amounts of unfairness and output to an array then grab min of that array
+    return min([arr[i + num_in_group - 1] - arr[i] for i in range(n - num_in_group + 1)])
 
 
 if __name__ == "__main__":
