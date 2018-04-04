@@ -4,14 +4,14 @@
 import os
 
 
-def tail(filename, num_lines = 10):
+def tail(filename, num_lines=10):
     filename = os.path.expanduser(filename)
-    last_n_lines = ["" for _ in range(10)]
+    last_n_lines = [""] * 10
     index = 0
     with open(filename) as f:
         for line in f:
             last_n_lines[index] = line
-            index = 0 if index == num_lines - 1 else index + 1
+            index = (index + 1) % num_lines
 
     print("".join(last_n_lines[index:] + last_n_lines[:index]))
 
