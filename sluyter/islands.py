@@ -32,6 +32,8 @@ EX 3:
 ###.......
 
 Number Islands: 1
+
+Bonus: Find a solution where you cannot store the entire map in an array. You can store up to sqrt(grid) memory
 """
 
 map1 = """.....#....
@@ -64,7 +66,7 @@ def find_island_groups(map):
 
     for row_i, row in enumerate(map_arr):
         for point_i, point in enumerate(row):
-            if point is "#":
+            if point == "#":
                 island_count += 1
                 map_arr = _find_island_groups(point_i, row_i, len_point, len_row, map_arr, island_count)
 
@@ -76,13 +78,13 @@ def _find_island_groups(point_i, row_i, len_point, len_row, map_arr, island_coun
     map_arr[row_i][point_i] = island_count
 
     # check 1. right, 2. down, 3. left, 4. up
-    if point_i + 1 < len_point and map_arr[row_i][point_i + 1] is "#":
+    if point_i + 1 < len_point and map_arr[row_i][point_i + 1] == "#":
         map_arr = _find_island_groups(point_i + 1, row_i, len_point, len_row, map_arr, island_count)
-    if row_i + 1 < len_row and map_arr[row_i + 1][point_i] is "#":
+    if row_i + 1 < len_row and map_arr[row_i + 1][point_i] == "#":
         map_arr = _find_island_groups(point_i, row_i + 1, len_point, len_row, map_arr, island_count)
-    if 0 <= point_i - 1 and map_arr[row_i][point_i - 1] is "#":
+    if 0 <= point_i - 1 and map_arr[row_i][point_i - 1] == "#":
         map_arr = _find_island_groups(point_i - 1, row_i, len_point, len_row, map_arr, island_count)
-    if 0 <= row_i - 1 and map_arr[row_i - 1][point_i] is "#":
+    if 0 <= row_i - 1 and map_arr[row_i - 1][point_i] == "#":
         map_arr = _find_island_groups(point_i, row_i - 1, len_point, len_row, map_arr, island_count)
 
     return map_arr

@@ -8,18 +8,21 @@ else print N
 
 
 def fizzbuzz(n, fizz_val, buzz_val):
+    text = ''
     for num in range(1, n + 1):
-        text = ''
-        if num % fizz_val == 0:
+        if num % fizz_val == 0 and num % buzz_val == 0:
+            text += "fizzbuzz"
+        elif num % fizz_val == 0:
             text += "fizz"
-        if num % buzz_val == 0:
+        elif num % buzz_val == 0:
             text += "buzz"
-
-        if not text:
+        else:
             text += str(num)
 
-        print(text)
+        text += '\n'
+
+    return text
 
 
 if __name__ == '__main__':
-    fizzbuzz(25, 3, 7)
+    print(fizzbuzz(25, 3, 7))
