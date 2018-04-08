@@ -11,7 +11,7 @@ import unittest
 
 
 def remove_adjacent_duplicates(string):
-    return "".join([string[i] for i in range(0, len(string)) if i - 1 < 0 or string[i - 1] != string[i]])
+    return "".join([string[i] for i in range(len(string)) if i - 1 < 0 or string[i - 1] != string[i]])
 
 
 class TestMe(unittest.TestCase):
