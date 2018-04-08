@@ -13,7 +13,10 @@
 import unittest
 
 
-def spiralize(matrix, spiral=[]):
+def spiralize(matrix, spiral=None):
+    if not spiral:
+        spiral = []
+
     # top
     for el in matrix[0]:
         spiral.append(el)
