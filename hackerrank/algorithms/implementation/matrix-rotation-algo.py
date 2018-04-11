@@ -58,27 +58,6 @@ def set_layers(matrix, layers_arr, num_rows=0, num_columns=0, level=1):
     return matrix
 
 
-def set_matrix(layers_arr, num_rows, num_columns):
-    # top
-    matrix = [layers_arr[0][:num_columns]]
-
-    # inner layers
-    inner_rows = []
-    if len(layers_arr) > 1:
-        inner_rows = set_matrix(layers_arr[1:], num_rows - 2, num_columns - 2)
-    elif len(layers_arr[0]) > num_columns * 2:
-        inner_rows = matrix.append([layers_arr[0][-1]] + layers_arr[0][num_columns:num_columns + num_rows - 2])
-
-    if inner_rows:
-        for inner_row_i, inner_row in enumerate(inner_rows):
-            matrix.append([layers_arr[0][-(inner_row_i + 1)]] + inner_row + [layers_arr[0][num_columns + inner_row_i]])
-
-    # bottom
-    matrix.append(list(reversed(layers_arr[0]))[num_rows - 2:num_rows + num_columns - 2])
-
-    return matrix
-
-
 def matrixRotation(matrix, num_rotations, num_rows, num_columns):
     layers_arr = get_layers(matrix)
     new_layers_arr = []
